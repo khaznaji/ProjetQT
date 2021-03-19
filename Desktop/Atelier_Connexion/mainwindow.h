@@ -15,11 +15,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
-    void on_pb_ajouter_2_clicked();
-
-    void on_pb_ajouter_clicked();
-
 private:
     Ui::MainWindow *ui;
 };

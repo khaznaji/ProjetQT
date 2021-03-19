@@ -25,17 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-    fonction.cpp \
         main.cpp \
         mainwindow.cpp \
-    connection.cpp \
-    membre.cpp
+    connection.cpp
 
 HEADERS += \
-    fonction.h \
         mainwindow.h \
-    connection.h \
-    membre.h
+    connection.h
 
 FORMS += \
         mainwindow.ui
