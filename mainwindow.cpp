@@ -34,7 +34,7 @@ void MainWindow::on_pb_ajouter_clicked()
 {
 
       ui->tabetudiant->setModel(tmpevenement.afficher());//refresh
-QMessageBox::information(nullptr, QObject::tr("Ajouter un étudiant"),
+QMessageBox::information(nullptr, QObject::tr("Ajouter un événement"),
                   QObject::tr("Etudiant ajouté.\n"
                               "Click Cancel to exit."), QMessageBox::Cancel);
 
