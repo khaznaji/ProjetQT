@@ -31,6 +31,14 @@ private slots:
 
     void on_comboBox_activated(const QString &arg1);
 
+    void on_pb_modifier_2_clicked();
+
+    void on_pb_supprimer2_clicked();
+
+    void on_pb_tri_2_clicked();
+
+    void on_pb_rechercher_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     evenement tmpevenement;

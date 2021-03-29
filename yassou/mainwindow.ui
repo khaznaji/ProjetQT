@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="icon" stdset="0">
      <pixmap>:/back.png</pixmap>
@@ -60,7 +60,7 @@
        <string notr="true">color:url(:/gris.jpg)</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -811,7 +811,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -970,7 +970,7 @@
            <string>Entrer le nom</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="lineEdit_19">
+         <widget class="QLineEdit" name="lineEditrech_2">
           <property name="geometry">
            <rect>
             <x>150</x>
@@ -980,7 +980,7 @@
            </rect>
           </property>
          </widget>
-         <widget class="QPushButton" name="pb_tri_3">
+         <widget class="QPushButton" name="pb_rechercher_2">
           <property name="geometry">
            <rect>
             <x>300</x>
@@ -1121,7 +1121,7 @@
           <string>adresse</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_24">
+        <widget class="QLineEdit" name="lineEdit_nom_2">
          <property name="geometry">
           <rect>
            <x>290</x>
@@ -1131,7 +1131,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_20">
+        <widget class="QLineEdit" name="lineEdit_prenom_2">
          <property name="geometry">
           <rect>
            <x>290</x>
@@ -1141,7 +1141,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_25">
+        <widget class="QLineEdit" name="lineEdit_adresse_2">
          <property name="geometry">
           <rect>
            <x>290</x>
@@ -1149,6 +1149,27 @@
            <width>211</width>
            <height>22</height>
           </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_modifier_2">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>240</y>
+           <width>81</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Modifier</string>
          </property>
         </widget>
        </widget>
@@ -1216,7 +1237,7 @@
           <string>nom</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_14">
+        <widget class="QLineEdit" name="lineEdit_noms">
          <property name="geometry">
           <rect>
            <x>150</x>

@@ -19,7 +19,10 @@ class participant
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(QString);
+     bool modifier(QString);
     QSqlQueryModel * rechercher(QString);
+        QSqlQueryModel * tri();
+
 private:
     QString nom,prenom,adresse;
 

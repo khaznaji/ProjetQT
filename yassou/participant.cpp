@@ -51,12 +51,32 @@ bool participant::supprimer(QString nom)
 QSqlQuery query;
 
 query.prepare("Delete from participant where NOM = :nom ");
-query.bindValue(":titre", nom);
+query.bindValue(":nom", nom);
 return    query.exec();
 }
 QSqlQueryModel *participant::rechercher(QString rech)
 {
     QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("select * from participant where fonction LIKE '"+rech+"%' or dateemb LIKE '"+rech+"%'");
+    model->setQuery("select * from participant where nom LIKE '"+rech+"%' or prenom LIKE '"+rech+"%'");
     return model;
+}
+bool participant::modifier(QString nom)
+{
+    QSqlQuery query;
+
+  query.prepare("UPDATE participant set prenom='"+prenom+"',adresse='"+adresse+"' WHERE nom LIKE '"+nom+"' ");
+   return query.exec();
+    }
+QSqlQueryModel * participant::tri()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+    model->setQuery("select * from participant ORDER BY nom ");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("adresse"));
+
+
+
+        return model;
 }

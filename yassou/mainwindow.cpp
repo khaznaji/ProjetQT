@@ -130,3 +130,54 @@ void MainWindow::on_pb_tri_clicked()
 {
      ui->tabevenement->setModel(tmpevenement.tri());
 }
+
+void MainWindow::on_pb_modifier_2_clicked()
+{
+    QString nom=ui->lineEdit_nom_2->text();
+    QString prenom=ui->lineEdit_prenom_2->text();
+    QString adresse=ui->lineEdit_adresse_2->text();
+
+    participant p(nom,prenom,adresse);
+    if(p.modifier(nom))
+    {
+          ui->tabparticipant->setModel(tmpparticipant.afficher());
+              QMessageBox::information(nullptr, QObject::tr("Modifier un participant"),
+                          QObject::tr("participant modifié.\n"), QMessageBox::Cancel);
+
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Modifier un participant"),
+                          QObject::tr("Erreur !!!!!!!!\n"), QMessageBox::Cancel);
+    }
+}
+
+void MainWindow::on_pb_supprimer2_clicked()
+{
+    QString nom= ui->lineEdit_noms->text();
+   bool test=tmpparticipant.supprimer(nom);
+   if(test)
+   {ui->tabparticipant->setModel(tmpparticipant.afficher());//refresh
+       QMessageBox::information(nullptr, QObject::tr("Supprimer un participant"),
+                   QObject::tr("participant supprimé.\n"
+                               "Click Cancel to exit."), QMessageBox::Cancel);
+
+   }
+   else
+       QMessageBox::critical(nullptr, QObject::tr("Supprimer un participant"),
+                   QObject::tr("Erreur !.\n"
+                               "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+
+void MainWindow::on_pb_tri_2_clicked()
+{
+     ui->tabparticipant->setModel(tmpparticipant.tri());
+}
+
+void MainWindow::on_pb_rechercher_2_clicked()
+{
+    QString rech =ui->lineEditrech_2->text();
+   ui->tabparticipant->setModel(tmpparticipant.rechercher(rech));
+}
