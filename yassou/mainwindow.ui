@@ -421,9 +421,31 @@
           <string>tri</string>
          </property>
         </widget>
+        <widget class="QPushButton" name="pb_tri_4">
+         <property name="geometry">
+          <rect>
+           <x>660</x>
+           <y>80</y>
+           <width>81</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>pdf</string>
+         </property>
+        </widget>
         <zorder>groupBox</zorder>
         <zorder>tabevenement</zorder>
         <zorder>pb_tri</zorder>
+        <zorder>pb_tri_4</zorder>
        </widget>
        <widget class="QLabel" name="label_18">
         <property name="geometry">
@@ -789,7 +811,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
