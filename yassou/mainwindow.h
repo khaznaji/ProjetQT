@@ -39,6 +39,10 @@ private slots:
 
     void on_pb_rechercher_2_clicked();
 
+    void on_pb_pdf_clicked();
+
+    void on_pb_imprimer_clicked();
+
 private:
     Ui::MainWindow *ui;
     evenement tmpevenement;
