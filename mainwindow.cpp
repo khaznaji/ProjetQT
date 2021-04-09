@@ -14,6 +14,7 @@
 #include "participant.h"
 #include "mainwindow.h"
 #include "smtp.h"
+#include<QPropertyAnimation>
 
 
 
@@ -43,8 +44,9 @@ connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(Browse()));
 ui->tabmateriel->setModel(tmpmateriel.afficher());
 ui->tabfournisseurs->setModel(tmpfournisseur.afficher());
 animation =new QPropertyAnimation(ui->label_56,"geometry");
+
     animation->setDuration(10000);
-    animation->setStartValue(ui->label->geometry());
+    animation->setStartValue(ui->label_56->geometry());
     animation->setEndValue(QRect(200,65,400,90));
 
     QEasingCurve curve;
@@ -52,7 +54,21 @@ animation =new QPropertyAnimation(ui->label_56,"geometry");
     animation->setEasingCurve(curve);
     curve.setAmplitude(2.00);
     animation->setLoopCount(2);
-    animation->start();}
+    animation->start();
+    /****Animation2*********/
+
+    animation =new QPropertyAnimation(ui->label_8,"geometry");
+    animation->setDuration(10000);
+    animation->setStartValue(ui->label_8->geometry());
+    animation->setEndValue(QRect(200,65,400,90));
+
+    QEasingCurve curver;
+    curve.setType(QEasingCurve::OutBounce);
+    animation->setEasingCurve(curve);
+    curve.setAmplitude(2.00);
+    animation->setLoopCount(2);
+    animation->start();
+}
 
 void MainWindow::Browse()
 {
@@ -133,13 +149,13 @@ QMessageBox::information(nullptr, QObject::tr("Ajouter un materiel"),
 //modifier materiel
 void MainWindow::on_pb_modifier_clicked()
 {
-    QString nom= ui->nomm->text();
-    QString type= ui->typem->text();
-    int cout= ui->coutm->text().toInt();
-    int duree= ui->dureem->text().toInt();
-    float volume= ui->volumem->text().toFloat();
-    float poids= ui->poidm->text().toFloat();
-    int nbr= ui->nbrm->text().toInt();
+    QString nom= ui->nom->text();
+    QString type= ui->typ->text();
+    int cout= ui->cout->text().toInt();
+    int duree= ui->duree->text().toInt();
+    int volume= ui->vlm->text().toInt();
+    int poids= ui->poids->text().toInt();
+    int nbr= ui->nbr->text().toInt();
 
 
 
@@ -181,7 +197,7 @@ else
 
 }
 
-//AJOUT FOURNISSEURS
+
 
 
 
@@ -193,16 +209,14 @@ void MainWindow::on_pb_modifier_2_clicked()
 {
 
 
-    int id = ui->id2->text().toInt();
+    int id = ui->le_id->text().toInt();
+        int num = ui->num->text().toInt();
 
-        QString nom= ui->nom2->text();
-        QString prenom= ui->pre2->text();
-        QString mail= ui->mail2->text();
-        int num = ui->num2->text().toInt();
-
-        QString niveau= ui->nv2->text();
-        QString controle= ui->ctrl2->text();
-
+        QString nom= ui->le_nom->text();
+        QString prenom= ui->prenom->text();
+        QString mail= ui->mail->text();
+        QString niveau= ui->nv->text();
+        QString controle= ui->ctrl->text();
 
   Fournisseur f;
   bool test=f.modifier( id, nom, prenom , mail, num, niveau , controle);
@@ -220,7 +234,7 @@ void MainWindow::on_pb_modifier_2_clicked()
     }
 
 }
-
+//SUPPRIMER FOURNISSEUR
 void MainWindow::on_pb_supprimer2_clicked()
 {
     int idd= ui->ids->text().toInt();
@@ -260,7 +274,7 @@ void MainWindow::on_pb_tri_clicked()
 {
      ui->tabfournisseurs->setModel(tmpfournisseur.tri());
 }
-
+//AJOUT FOURNISSEURS
 void MainWindow::on_pushButton_clicked()
 {
     int id = ui->le_id->text().toInt();
@@ -343,11 +357,46 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
 void MainWindow::on_toolButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+
+}
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+
+}
+
+void MainWindow::on_toolButton_triggered(QAction *arg1)
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+
+}
+
+void MainWindow::on_pushButton_14_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+
+}
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
 
 }

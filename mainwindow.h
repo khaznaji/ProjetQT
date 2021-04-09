@@ -63,6 +63,18 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_pushButton_17_clicked();
+
+    void on_toolButton_triggered(QAction *arg1);
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_15_clicked();
+
+    void on_pushButton_16_clicked();
+
 private:
     Ui::MainWindow *ui;
     Materiel tmpmateriel ;
