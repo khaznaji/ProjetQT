@@ -1,0 +1,11 @@
+#ifndef ADHERANT_H
+#define ADHERANT_H
+
+
+class adherant
+{
+public:
+    adherant();
+};
+
+#endif // ADHERANT_H
