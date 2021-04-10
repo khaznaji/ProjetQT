@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->tabprojet->setModel(tmpprojet.afficher());
     ui->tabpartenaire->setModel(tmppartenaire.afficher());
-    ui->lineedit_id->setValidator(new QIntValidator(100, 999, this));
+    ui->lineEdit_6->setValidator(new QIntValidator(100, 999, this));
 }
 
 MainWindow::~MainWindow()
@@ -28,13 +28,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pb_ajouter_clicked()
 {
-    int id = ui->lineedit_id->text().toInt();
-    QString nom= ui->lineEdit_nom->text();
-    QString type= ui->lineEdit_type->text();
-    QString status= ui->lineEdit_status->text();
-    QString adresse= ui->lineEdit_adresse->text();
-    QString datedebut= ui->lineEdit_datedebut->text();
-    int budget = ui->lineEdit_budget->text().toInt();
+    int id = ui->lineEdit_6->text().toInt();
+    QString nom= ui->lineEdit_7->text();
+    QString type= ui->lineEdit_8->text();
+    QString status= ui->lineEdit_9->text();
+    QString adresse= ui->lineEdit_10->text();
+    QString datedebut= ui->lineEdit_11->text();
+    int budget = ui->lineEdit_12->text().toInt();
 
 
 
@@ -74,11 +74,11 @@ void MainWindow::on_pb_supprimer_3_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    int id = ui->lineEdit_15->text().toInt();
-    QString nom= ui->lineEdit_16->text();
-    QString prenom= ui->lineEdit_17->text();
-    QString adressem= ui->lineEdit_18->text();
-    int num = ui->lineEdit_13->text().toInt();
+    int id = ui->lineEdit_24->text().toInt();
+    QString nom= ui->lineEdit_20->text();
+    QString prenom= ui->lineEdit_25->text();
+    QString adressem= ui->lineEdit_26->text();
+    int num = ui->lineEdit_27->text().toInt();
 
 
 
@@ -136,8 +136,8 @@ void MainWindow::on_pushButton10_clicked()
 
         if(test)
         {
-            QMessageBox::information(nullptr, QObject::tr("modifie une fonction"),
-                              QObject::tr("fonctin modifiée.\n"
+            QMessageBox::information(nullptr, QObject::tr("modifie une projet"),
+                              QObject::tr("projet modifiée.\n"
                                           "Click Cancel to exit."), QMessageBox::Cancel);
         }
         else
@@ -231,8 +231,8 @@ void MainWindow::on_pushButton_8_clicked()
 
         if(test)
         {
-            QMessageBox::information(nullptr, QObject::tr("modifie une fonction"),
-                              QObject::tr("fonctin modifiée.\n"
+            QMessageBox::information(nullptr, QObject::tr("modifie une partenaire"),
+                              QObject::tr("partenaire modifiée.\n"
                                           "Click Cancel to exit."), QMessageBox::Cancel);
         }
         else
