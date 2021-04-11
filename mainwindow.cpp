@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->tabsponsor->setModel(tmpsponsor.afficher());
     ui->tabmarketing->setModel(tmpmarketing.afficher());
-    ui->lineedit_id->setValidator(new QIntValidator(100, 999, this));
+    ui->lineEdit_24->setValidator(new QIntValidator(100, 999, this));
 }
 
 MainWindow::~MainWindow()
@@ -27,13 +27,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pb_ajouter_clicked()
 {
-    int id = ui->lineedit_id->text().toInt();
-    QString nom= ui->lineEdit_nom->text();
-    QString adresse= ui->lineEdit_type->text();
-    QString mail= ui->lineEdit_status->text();
-    QString produit= ui->lineEdit_adresse->text();
-    QString convention= ui->lineEdit_datedebut->text();
-    int numtel = ui->lineEdit_budget->text().toInt();
+    int id = ui->lineEdit_6->text().toInt();
+    QString nom= ui->lineEdit_38->text();
+    QString adresse= ui->lineEdit_8->text();
+    QString mail= ui->lineEdit_9->text();
+    QString produit= ui->lineEdit_10->text();
+    QString convention= ui->lineEdit_11->text();
+    int numtel = ui->lineEdit_12->text().toInt();
 
 
 
@@ -60,24 +60,24 @@ void MainWindow::on_pb_supprimer_3_clicked()
     bool test=tmpsponsor.supprimer(id);
     if(test)
     {ui->tabsponsor->setModel(tmpsponsor.afficher());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un Projet"),
-                    QObject::tr("Projet supprimé.\n"
+        QMessageBox::information(nullptr, QObject::tr("Supprimer un sponsor"),
+                    QObject::tr("sponsor supprimé.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Supprimer un Projet"),
+        QMessageBox::critical(nullptr, QObject::tr("Supprimer un sponsor"),
                     QObject::tr("Erreur !.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    int id = ui->lineEdit_15->text().toInt();
-    QString nom= ui->lineEdit_16->text();
-    QString type= ui->lineEdit_17->text();
-    QString date= ui->lineEdit_18->text();
-    int num = ui->lineEdit_13->text().toInt();
+    int id = ui->lineEdit_24->text().toInt();
+    QString nom= ui->lineEdit_20->text();
+    QString type= ui->lineEdit_25->text();
+    QString date= ui->lineEdit_26->text();
+    int num = ui->lineEdit_27->text().toInt();
 
 
 
@@ -87,13 +87,13 @@ void MainWindow::on_pushButton_5_clicked()
 {
 
       ui->tabmarketing->setModel(tmpmarketing.afficher());//refresh
-QMessageBox::information(nullptr, QObject::tr("Ajouter un Partenaire"),
+QMessageBox::information(nullptr, QObject::tr("Ajouter marketing"),
                   QObject::tr("Marketing ajouté.\n"
                               "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
   else
-      QMessageBox::critical(nullptr, QObject::tr("Ajouter un Partenaire"),
+      QMessageBox::critical(nullptr, QObject::tr("Ajouter marketing"),
                   QObject::tr("Erreur !.\n"
                               "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -105,8 +105,8 @@ void MainWindow::on_pushButton_4_clicked()
     bool test=tmpmarketing.supprimer(id);
     if(test)
     {ui->tabmarketing->setModel(tmpmarketing.afficher());//refresh
-        QMessageBox::information(nullptr, QObject::tr("Supprimer un Partenaire"),
-                    QObject::tr("Partenaire supprimé.\n"
+        QMessageBox::information(nullptr, QObject::tr("Supprimer marketing"),
+                    QObject::tr("marketing supprimé.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
@@ -135,9 +135,10 @@ void MainWindow::on_pushButton10_clicked()
 
             if(test)
             {
-                QMessageBox::information(nullptr, QObject::tr("modifie une fonction"),
-                                  QObject::tr("fonctin modifiée.\n"
+                QMessageBox::information(nullptr, QObject::tr("modifie une Sponsor"),
+                                  QObject::tr("Sponsor modifiée.\n"
                                               "Click Cancel to exit."), QMessageBox::Cancel);
+                ui->tabsponsor->setModel(tmpsponsor.afficher());
             }
             else
                 QMessageBox::critical(nullptr, QObject::tr("non modifie"),
@@ -219,7 +220,17 @@ void MainWindow::on_pushButton_clicked()
 
 
 
-void MainWindow::on_pushButton10_2_clicked()
+
+
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->tabsponsor->setModel( tmpsponsor.afficher_tri());
+
+}
+
+void MainWindow::on_pushButton_8_clicked()
 {
     int id= ui->lineEdit_24->text().toInt();
         QString nom=ui->lineEdit_20->text();
@@ -234,22 +245,15 @@ void MainWindow::on_pushButton10_2_clicked()
 
             if(test)
             {
-                QMessageBox::information(nullptr, QObject::tr("modifie une fonction"),
-                                  QObject::tr("fonctin modifiée.\n"
+                QMessageBox::information(nullptr, QObject::tr("modifie une Marketing"),
+                                  QObject::tr("Marketing modifiée.\n"
                                               "Click Cancel to exit."), QMessageBox::Cancel);
+                ui->tabmarketing->setModel(tmpmarketing.afficher());
             }
             else
                 QMessageBox::critical(nullptr, QObject::tr("non modifie"),
                             QObject::tr("Erreur !.\n"
                                         "Click Cancel to exit."), QMessageBox::Cancel);
                 ui->tabmarketing->setModel(tmpmarketing.afficher());
-
-}
-
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    ui->tabsponsor->setModel( tmpsponsor.afficher_tri());
 
 }
