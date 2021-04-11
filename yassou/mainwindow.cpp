@@ -50,16 +50,34 @@
 #include<QtSql/QSqlQuery>
 
 #include<QVariant>
+#include <QMediaPlayer>
+#include <QSound>
+#include<QSystemTrayIcon>
+
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
 ui->setupUi(this);
-
+mMediaPlayer=new QMediaPlayer(this);
+//connect(mMediaPlayer,&QMediaPlayer::positionChanged,[&](qint64 pos){ui->avance->setValue(pos);});
+//connect(mMediaPlayer,&QMediaPlayer::durationChanged,[&](qint64 dur){ui->avance->setMaximum(dur);});
 
 ui->tabevenement->setModel(tmpevenement.afficher());
 ui->tabparticipant->setModel(tmpparticipant.afficher());
+animation =new QPropertyAnimation(ui->label_4,"geometry");
+    animation->setDuration(10000);
+    animation->setStartValue(ui->label->geometry());
+    animation->setEndValue(QRect(200,65,400,90));
+
+    QEasingCurve curve;
+    curve.setType(QEasingCurve::OutBounce);
+    animation->setEasingCurve(curve);
+    curve.setAmplitude(2.00);
+    animation->setLoopCount(2);
+    animation->start();
 
 }
 
@@ -130,23 +148,37 @@ void MainWindow::on_pb_ajouter_2_clicked()
 {
     QString nom= ui->lineEdit_nom->text();
     QString prenom= ui->lineEdit_prenom->text();
-    QString adresse= ui->lineEdit_adresse->text();
+    QString mail= ui->lineEdit_mail->text();
+    int CIN= ui->lineEdit_CIN->text().toInt();
+    int numtel= ui->lineEdit_numtel->text().toInt();
+    QString datenaissance= ui->lineEdit_datenaissance->text();
+    QString typeeve= ui->lineEdit_typeeve->text();
 
-  participant p(nom,prenom,adresse);
+
+  participant p(nom,prenom,mail,CIN,numtel,datenaissance,typeeve);
   bool test=p.ajouter();
   if(test)
 {
 
       ui->tabparticipant->setModel(tmpparticipant.afficher());//refresh
-QMessageBox::information(nullptr, QObject::tr("Ajouter un participant"),
-                  QObject::tr("Participant ajouté.\n"
-                              "Click Cancel to exit."), QMessageBox::Cancel);
+      QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+              notifyIcon->show();
+              notifyIcon->setIcon(QIcon("icone.png"));
 
-}
-  else
-      QMessageBox::critical(nullptr, QObject::tr("Ajouter un participant"),
-                  QObject::tr("Erreur !.\n"
-                              "Click Cancel to exit."), QMessageBox::Cancel);
+              notifyIcon->showMessage("GESTION CLIENT  CLIENTS ","client Ajouté",QSystemTrayIcon::Information,15000);
+
+          QMessageBox::information(nullptr, QObject::tr("ajouter client"),
+                                QObject::tr("client ajouté./n"
+                                   "click cancel to exit."),QMessageBox::Cancel);
+          }
+
+          else
+              QMessageBox::critical(nullptr, QObject::tr("ajouter client"),
+                                    QObject::tr("Erreur !./n"
+                                       "click cancel to exit."),QMessageBox::Cancel);
+
+
+
 }
 
 void MainWindow::on_pb_modifier_clicked()
@@ -180,12 +212,16 @@ void MainWindow::on_pb_tri_clicked()
 
 void MainWindow::on_pb_modifier_2_clicked()
 {
-    QString nom=ui->lineEdit_nom_2->text();
-    QString prenom=ui->lineEdit_prenom_2->text();
-    QString adresse=ui->lineEdit_adresse_2->text();
+    QString nom= ui->lineEdit_nom_2->text();
+    QString prenom= ui->lineEdit_prenom_2->text();
+    QString mail= ui->lineEdit_mail_2->text();
+    int CIN= ui->lineEdit_CIN_2->text().toInt();
+    int numtel= ui->lineEdit_numtel_2->text().toInt();
+    QString datenaissance= ui->lineEdit_datenaissance_2->text();
+    QString typeeve= ui->lineEdit_typeeve_2->text();
 
-    participant p(nom,prenom,adresse);
-    if(p.modifier(nom))
+    participant p(nom,prenom,mail,CIN,numtel,datenaissance,typeeve);
+    /*if(p.modifier(nom))
     {
           ui->tabparticipant->setModel(tmpparticipant.afficher());
               QMessageBox::information(nullptr, QObject::tr("Modifier un participant"),
@@ -196,7 +232,7 @@ void MainWindow::on_pb_modifier_2_clicked()
     {
         QMessageBox::critical(nullptr, QObject::tr("Modifier un participant"),
                           QObject::tr("Erreur !!!!!!!!\n"), QMessageBox::Cancel);
-    }
+    }*/
 }
 
 void MainWindow::on_pb_supprimer2_clicked()
@@ -245,7 +281,7 @@ void MainWindow::on_pb_pdf_clicked()
                          "<body bgcolor=#ffffff link=#5000A0>\n"
 
                         //     "<align='right'> " << datefich << "</align>"
-                         "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+                         "<center> <H1>Liste des evenements </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
 
                      // headers
                      out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
@@ -298,3 +334,54 @@ void MainWindow::on_pb_imprimer_clicked()
 
            return;
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString filename=QFileDialog::getOpenFileName(this,"ouvrir");
+    if (filename.isEmpty()){return;}
+    mMediaPlayer->setMedia(QUrl::fromLocalFile(filename));
+  on_pushButton_2_clicked();
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+     mMediaPlayer->play();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+     mMediaPlayer->pause();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+     mMediaPlayer->stop();
+}
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    ui->avance->setValue(value);
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    if(ui->pushButton_5->text()=="muet"){
+     mMediaPlayer->setMuted(true);
+    ui->pushButton_5->setText("unmuet");}
+    else{ mMediaPlayer->setMuted(false);
+        ui->pushButton_5->setText("muet");}
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_toolButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+
+}
+
