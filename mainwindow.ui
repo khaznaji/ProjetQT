@@ -1078,6 +1078,43 @@ text-align: middle;
       </widget>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Historique</string>
+     </attribute>
+     <widget class="QTableView" name="tabpartenaire_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>751</width>
+        <height>481</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>60</y>
+        <width>81</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover{ 
+background-color: rgb(0, 255, 255);
+color:#000000;
+background:#55aaff;
+border: none;
+text-align: middle;
+}</string>
+      </property>
+      <property name="text">
+       <string>Historique</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
