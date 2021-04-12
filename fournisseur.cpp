@@ -107,7 +107,7 @@ QString res= QString::number(idd);
     {
         QSqlQueryModel * model= new QSqlQueryModel();
 
-        model->setQuery("select * from FOURNISSEURS ORDER BY niveau ");
+        model->setQuery("select * from FOURNISSEURS ORDER BY id ");
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
         model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
         model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
