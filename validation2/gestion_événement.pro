@@ -8,6 +8,8 @@ QT       += core gui sql
 QT       +=printsupport
 QMAKE_CXXFLAGS+=-std=gnu++11
 QT += core gui  multimedia
+QT += network
+
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

@@ -7,7 +7,14 @@
 #include<QSound>
 #include<QPropertyAnimation>
 #include "publicite.h"
+#include <QNetworkAccessManager>
+#include <QUrlQuery>
 
+#include <QtCore>
+#include <QtGui>
+#include <QDialog>
+#include <QMouseEvent>
+#include <QtWidgets/QMessageBox>
 namespace Ui {
 class MainWindow;
 }
@@ -98,6 +105,8 @@ private slots:
     void on_pushButton_14_clicked();
 
     void on_pushButton_13_clicked();
+    void replyFinished(QNetworkReply* reply);
+
 
 private:
     Ui::MainWindow *ui;

@@ -3880,6 +3880,174 @@ MS Shell Dlg2 ,10</string>
        <string notr="true">background:#e2e2e2</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>450</y>
+        <width>75</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }
+
+Police:
+
+MS Shell Dlg2 ,10</string>
+      </property>
+      <property name="text">
+       <string>excel</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>610</y>
+        <width>104</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>462</x>
+        <y>570</y>
+        <width>101</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>610</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }
+
+Police:
+
+MS Shell Dlg2 ,10</string>
+      </property>
+      <property name="text">
+       <string>envoyer sms</string>
+      </property>
+     </widget>
      <zorder>listWidget_3</zorder>
      <zorder>tabpublicite</zorder>
      <zorder>pb_tri_3</zorder>
@@ -3905,6 +4073,10 @@ MS Shell Dlg2 ,10</string>
      <zorder>label_39</zorder>
      <zorder>label_83</zorder>
      <zorder>label_84</zorder>
+     <zorder>pushButton_2</zorder>
+     <zorder>textEdit</zorder>
+     <zorder>lineEdit</zorder>
+     <zorder>pushButton_7</zorder>
     </widget>
     <widget class="QWidget" name="page_7"/>
     <widget class="QWidget" name="page_6"/>

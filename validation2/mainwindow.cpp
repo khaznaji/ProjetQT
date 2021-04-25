@@ -57,6 +57,50 @@
 #include<QPropertyAnimation>
 #include<QSystemTrayIcon>
 
+#include <iostream>
+
+#include<QDate>
+
+#include <QNetworkAccessManager>
+
+#include <QUrlQuery>
+
+#include <QNetworkReply>
+
+#include <QJsonValue>
+
+#include <QJsonValueRef>
+
+#include <QJsonDocument>
+
+#include <QJsonObject>
+
+#include <QJsonArray>
+
+#include <QString>
+
+#include <QDebug>
+
+#include <QtCore>
+
+#include <QtGui>
+
+#include <QDialog>
+
+#include <QModelIndex>
+
+#include <QGridLayout>
+
+#include <QApplication>
+
+#include <QIntValidator>
+
+#include <QDateTime>
+
+#include <QMediaPlayer>
+
+#include <QRadioButton>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -823,4 +867,83 @@ void MainWindow::on_pushButton_13_clicked()
        }
     ui->stackedWidget->setCurrentIndex(5);
 }
+
+//excel
+void MainWindow::on_pushButton_2_clicked()
+{
+    QTableView *table;
+                   table = ui->tabpublicite;
+                   QString filters("CSV files (*.csv);;All files (*.*)");
+                   QString defaultFilter("CSV files (*.csv)");
+                   QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                                      filters, &defaultFilter);
+                   QFile file(fileName);
+                   QAbstractItemModel *model =  table->model();
+                   if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+                       QTextStream data(&file);
+                       QStringList strList;
+                       for (int i = 0; i < model->columnCount(); i++) {
+                           if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                               strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+                           else
+                               strList.append("");
+                       }
+                       data << strList.join(";") << "\n";
+                       for (int i = 0; i < model->rowCount(); i++) {
+                           strList.clear();
+                           for (int j = 0; j < model->columnCount(); j++) {
+                               if (model->data(model->index(i, j)).toString().length() > 0)
+                                   strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                               else
+                                   strList.append("");
+                           }
+                           data << strList.join(";") + "\n";
+                       }
+                       file.close();
+                       //QMessageBox::information(this,"Exporter To Excel","Exporter En Excel Avec Succées ");
+
+
+                   }
+}
+//sms
+void MainWindow::on_pushButton_7_clicked()
+{
+    QNetworkAccessManager * manager = new QNetworkAccessManager(this);
+
+       QUrl url("https://AC2de718dd6614da25d92acb2e9b506766:77c281aae1e10141fa98f618768a2c40@api.twilio.com/2010-04-01/Accounts/AC2de718dd6614da25d92acb2e9b506766/Messages.json");
+       QNetworkRequest request(url);
+
+       request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+
+
+       QUrlQuery params;
+       params.addQueryItem("From", "+18053879768");
+       params.addQueryItem("To",ui->lineEdit->text() );//"+21690101450"
+       params.addQueryItem("Body", ui->textEdit->toPlainText());
+      // params.addQueryItem("Body", "test");
+
+       // etc
+
+       connect(manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(replyFinished(QNetworkReply*)));
+
+       manager->post(request, params.query().toUtf8());
+
+   }
+   void MainWindow::replyFinished(QNetworkReply* reply)
+   {
+       //QByteArray bts = rep->readAll();
+
+
+       QByteArray buffer = reply->readAll();
+       qDebug() << buffer;
+       QJsonDocument jsonDoc(QJsonDocument::fromJson(buffer));
+       QJsonObject jsonReply = jsonDoc.object();
+
+       QJsonObject response = jsonReply["response"].toObject();
+       QJsonArray  data     = jsonReply["data"].toArray();
+       qDebug() << data;
+       qDebug() << response;
+
+
+   }
 
