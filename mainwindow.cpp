@@ -15,6 +15,13 @@
 #include "mainwindow.h"
 #include "smtp.h"
 #include<QPropertyAnimation>
+#include<QPrinter>
+//arduino
+#include<QtSerialPort/QSerialPort>
+#include<QtSerialPort/QSerialPortInfo>
+#include"arduino.h"
+
+
 
 
 
@@ -32,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
 ui->setupUi(this);
-
+ard.connnect_arduino();
 mMediaPlayer=new QMediaPlayer(this);
 connect(mMediaPlayer,&QMediaPlayer::positionChanged,[&](qint64 pos){ui->avance_3->setValue(pos);});
 connect(mMediaPlayer,&QMediaPlayer::durationChanged,[&](qint64 dur){ui->avance_3->setMaximum(dur);});
@@ -43,6 +50,29 @@ connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(Browse()));
 
 ui->tabmateriel->setModel(tmpmateriel.afficher());
 ui->tabfournisseurs->setModel(tmpfournisseur.afficher());
+
+
+
+QRegExp rx("[a-zA-Z]+");
+ QValidator *validator = new QRegExpValidator(rx, this);
+//fournisseur
+ ui->le_nom->setValidator(validator);
+ ui->prenom->setValidator(validator);
+ ui->nv->setValidator(validator);
+ ui->ctrl->setValidator(validator);
+
+ui->le_id->setValidator(new QIntValidator(0,999,this));
+ui->num->setValidator(new QIntValidator(0,99999999,this));
+//materiel
+ui->nom->setValidator(validator);
+ui->typ->setValidator(validator);
+ui->cout->setValidator(new QIntValidator(0,999,this));
+ui->duree->setValidator(new QIntValidator(0,999,this));
+ui->vlm->setValidator(new QIntValidator(0,999,this));
+ui->poids->setValidator(new QIntValidator(0,999,this));
+ui->nbr->setValidator(new QIntValidator(0,999,this));
+
+
 animation =new QPropertyAnimation(ui->label_56,"geometry");
 
     animation->setDuration(10000);
@@ -127,6 +157,16 @@ void MainWindow::on_pb_ajouter_clicked()
     int poids= ui->poids->text().toInt();
     int nbr= ui->nbr->text().toInt();
 
+    //controle de saisie
+       if ((nom.isEmpty()||type.isEmpty())) {
+                ui->label_16->setText("Ce Champ est obligatoire");
+                ui->label_17->setText("Ce Champ est obligatoire");}
+       else{
+
+
+
+
+
 
   Materiel m(nom,type,cout,duree,volume,poids,nbr);
   bool test=m.ajouter();
@@ -137,6 +177,8 @@ void MainWindow::on_pb_ajouter_clicked()
 QMessageBox::information(nullptr, QObject::tr("Ajouter un materiel"),
                   QObject::tr("materiel ajouté.\n"
                               "Click Cancel to exit."), QMessageBox::Cancel);
+ui->label_16->setText("");
+ui->label_17->setText("");
 
 }
   else
@@ -146,6 +188,9 @@ QMessageBox::information(nullptr, QObject::tr("Ajouter un materiel"),
 
 
 }
+}
+
+
 //modifier materiel
 void MainWindow::on_pb_modifier_clicked()
 {
@@ -157,6 +202,11 @@ void MainWindow::on_pb_modifier_clicked()
     int poids= ui->poids->text().toInt();
     int nbr= ui->nbr->text().toInt();
 
+    //controle de saisie
+    if ((nom.isEmpty()||type.isEmpty())) {
+                ui->label_16->setText("Ce Champ est obligatoire");
+                ui->label_17->setText("Ce Champ est obligatoire");}
+    else{
 
 
   Materiel m;
@@ -166,6 +216,8 @@ void MainWindow::on_pb_modifier_clicked()
           ui->tabmateriel->setModel(tmpmateriel.afficher());
               QMessageBox::information(nullptr, QObject::tr("Modifier un materiel"),
                           QObject::tr("événement modifié.\n"), QMessageBox::Cancel);
+              ui->label_16->setText("");
+              ui->label_17->setText("");
 
     }
     else
@@ -175,6 +227,7 @@ void MainWindow::on_pb_modifier_clicked()
     }
 
 
+}
 }
 //SUPPRIMER MATERIEL
 
@@ -189,12 +242,13 @@ if(test)
                             "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
-else
+else{
     QMessageBox::critical(nullptr, QObject::tr("Supprimer un materiel"),
                 QObject::tr("Erreur !.\n"
                             "Click Cancel to exit."), QMessageBox::Cancel);
 
 
+}
 }
 
 
@@ -217,7 +271,19 @@ void MainWindow::on_pb_modifier_2_clicked()
         QString mail= ui->mail->text();
         QString niveau= ui->nv->text();
         QString controle= ui->ctrl->text();
+        QString alt="@";
+            QString pt=".";
 
+        //controle de saisie
+        if ((nom.isEmpty()||prenom.isEmpty()||niveau.isEmpty()||controle.isEmpty())) {
+                    ui->label_2->setText("Ce Champ est obligatoire");
+                    ui->label_3->setText("Ce Champ est obligatoire");
+                    ui->label_6->setText("Ce Champ est obligatoire");
+                    ui->label_7->setText("Ce Champ est obligatoire");
+        }
+        else if(mail.indexOf(alt)<1 || mail.indexOf(pt)<mail.indexOf(alt)+2)
+         {ui->label_4->setText("Verifier le mail");}
+        else{
   Fournisseur f;
   bool test=f.modifier( id, nom, prenom , mail, num, niveau , controle);
     if(test)
@@ -225,6 +291,11 @@ void MainWindow::on_pb_modifier_2_clicked()
           ui->tabfournisseurs->setModel(tmpfournisseur.afficher());
               QMessageBox::information(nullptr, QObject::tr("Modifier un fournisseur"),
                           QObject::tr("fournisseur modifié.\n"), QMessageBox::Cancel);
+              ui->label_2->setText("");
+              ui->label_3->setText("");
+              ui->label_4->setText("");
+              ui->label_6->setText("");
+              ui->label_7->setText("");
 
     }
     else
@@ -234,6 +305,8 @@ void MainWindow::on_pb_modifier_2_clicked()
     }
 
 }
+}
+
 //SUPPRIMER FOURNISSEUR
 void MainWindow::on_pb_supprimer2_clicked()
 {
@@ -285,8 +358,19 @@ void MainWindow::on_pushButton_clicked()
         QString mail= ui->mail->text();
         QString niveau= ui->nv->text();
         QString controle= ui->ctrl->text();
+        QString alt="@";
+            QString pt=".";
 
 
+        //controle de saisie
+        if ((nom.isEmpty()||prenom.isEmpty()||niveau.isEmpty()||controle.isEmpty())) {
+                    ui->label_2->setText("Ce Champ est obligatoire");
+                    ui->label_3->setText("Ce Champ est obligatoire");
+                    ui->label_6->setText("Ce Champ est obligatoire");
+                    ui->label_7->setText("Ce Champ est obligatoire");}
+        else if(mail.indexOf(alt)<1 || mail.indexOf(pt)<mail.indexOf(alt)+2)
+         {ui->label_4->setText("Verifier le mail");}
+        else{
 
       Fournisseur f( id, nom, prenom , mail, num, niveau , controle);
       bool test=f.ajouter();
@@ -297,6 +381,13 @@ void MainWindow::on_pushButton_clicked()
     QMessageBox::information(nullptr, QObject::tr("Ajouter un fournisseur"),
                       QObject::tr("fournisseur ajouté.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
+    ui->label_2->setText("");
+    ui->label_3->setText("");
+    ui->label_4->setText("");
+    ui->label_6->setText("");
+    ui->label_7->setText("");
+
+
 
     }
       else
@@ -305,6 +396,8 @@ void MainWindow::on_pushButton_clicked()
                                   "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
+}
+
 
 void MainWindow::on_pushButton_2_clicked()
 {
@@ -357,20 +450,25 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainWindow::on_toolButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
 
 }
 
 void MainWindow::on_pushButton_17_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
 
 }
+void MainWindow::on_pushButton_21_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(2);
+}
+
 
 void MainWindow::on_toolButton_triggered(QAction *arg1)
 {
@@ -379,7 +477,7 @@ void MainWindow::on_toolButton_triggered(QAction *arg1)
 
 void MainWindow::on_pushButton_7_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
 
 }
 
@@ -391,12 +489,153 @@ void MainWindow::on_pushButton_14_clicked()
 
 void MainWindow::on_pushButton_15_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 
 }
 
 void MainWindow::on_pushButton_16_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 
 }
+
+void MainWindow::on_pushButton_18_clicked()
+{int x=0;
+    ui->stackedWidget->setCurrentIndex(1);
+    QString read=ard.read_from_arduino();
+    int ln=read.length();
+    QString id=read.right(ln-1);//élimination du premier espace
+    id=id.left(ln-3);//élimination des 3 derniers espaces (serial.println)
+    QSqlQuery query;
+        query.prepare("select presence from arduino where id='"+id+"'");
+
+        if(query.exec()){
+
+        query.first();
+
+        int presence=query.value(0).toInt();
+        if(presence==0){presence=1;ui->lcdNumber->display(x++);}
+        else{presence=0;ui->lcdNumber->display(x--);}
+        QString xpresence=QString::number(presence);
+        query.prepare("update arduino set presence='"+xpresence+"' where id='"+id+"'");
+        query.exec();}
+
+        else{
+            ard.write_to_arduino("1");
+        }
+
+        QSqlQueryModel * model= new QSqlQueryModel();
+            model->setQuery("select nom,prenom from arduino where presence=1");
+
+            model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+            model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom"));
+
+ui->tableView->setModel(model);
+}
+
+
+void MainWindow::on_pushButton_19_clicked()
+{
+    QMediaPlayer * bulletsound = new QMediaPlayer();
+        bulletsound->setMedia(QUrl::fromLocalFile("C:/Users/User/Downloads/nc.mp3"));
+       if (bulletsound->state() == QMediaPlayer::PlayingState){
+            bulletsound->setPosition(0);
+        }
+        else if (bulletsound->state() == QMediaPlayer::StoppedState){
+            bulletsound->play();
+        }
+        QString strStream;
+                         QTextStream out(&strStream);
+
+                         const int rowCount = ui->tabmateriel->model()->rowCount();
+                         const int columnCount = ui->tabmateriel->model()->columnCount();
+                         QString TT = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss");
+                         out <<  "<html>\n"
+                             "<head>\n"
+                             "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                             <<  QString("<title>%1</title>\n").arg("strTitle")
+                             <<  "</head>\n"
+                             "<body bgcolor=#E7E7E7 link=#5000A1>\n"
+
+                                "<h1 style=\"text-align: center;\"><strong> ********Liste Des Materiels******** "+TT+"</strong></h1>"
+                            //     "<align='right'> " << datefich << "</align>"
+                             "<center></br><table border=3 cellspacing=1 cellpadding=2>\n";
+
+                         // headers
+                         out << "<thead><tr bgcolor=#FFF9F6> <th>Numero</th>";
+                         for (int column = 0; column < columnCount; column++)
+                             if (!ui->tabmateriel->isColumnHidden(column))
+                                 out << QString("<th>%1</th>").arg(ui->tabmateriel->model()->headerData(column, Qt::Horizontal).toString());
+                         out << "</tr></thead>\n";
+
+                         // data table
+                         for (int row = 0; row < rowCount; row++) {
+                             out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                             for (int column = 0; column < columnCount; column++) {
+                                 if (!ui->tabmateriel->isColumnHidden(column)) {
+                                     QString data = ui->tabmateriel->model()->data(ui->tabmateriel->model()->index(row, column)).toString().simplified();
+                                     out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                 }
+                             }
+                             out << "</tr>\n";
+                         }
+                         out <<  "</table> </center>\n"
+
+                             "</body>\n"
+                                 "<img style=\"  grid-column: 5 / 6 grid-row: 2 / 3;\" src=\"C:/Users/User/Desktop/back.png\" alt=\"picture\" width=\"40\" height=\"30\">";
+
+                             "</html>\n";
+
+                   QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                     if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+                    QPrinter printer (QPrinter::PrinterResolution);
+                     printer.setOutputFormat(QPrinter::PdfFormat);
+                    printer.setPaperSize(QPrinter::A4);
+                   printer.setOutputFileName(fileName);
+
+                    QTextDocument doc;
+                     doc.setHtml(strStream);
+                     doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                     doc.print(&printer);
+
+
+}
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    QTableView *table;
+                       table = ui->tabfournisseurs;
+                       QString filters("CSV files (*.csv);;All files (*.*)");
+                       QString defaultFilter("CSV files (*.csv)");
+                       QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                                          filters, &defaultFilter);
+                       QFile file(fileName);
+                       QAbstractItemModel *model =  table->model();
+                       if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+                           QTextStream data(&file);
+                           QStringList strList;
+                           for (int i = 0; i < model->columnCount(); i++) {
+                               if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                                   strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+                               else
+                                   strList.append("");
+                           }
+                           data << strList.join(";") << "\n";
+                           for (int i = 0; i < model->rowCount(); i++) {
+                               strList.clear();
+                               for (int j = 0; j < model->columnCount(); j++) {
+                                   if (model->data(model->index(i, j)).toString().length() > 0)
+                                       strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                                   else
+                                       strList.append("");
+                               }
+                               data << strList.join(";") + "\n";
+                           }
+                           file.close();
+                           //QMessageBox::information(this,"Exporter To Excel","Exporter En Excel Avec Succées ");
+
+
+                       }
+}
+

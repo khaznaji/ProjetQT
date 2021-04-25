@@ -1,5 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>../../Downloads/gris.jpg</file>
+        <file>ressources/add2.png</file>
+        <file>ressources/card2.png</file>
+        <file>ressources/delete2.png</file>
+        <file>ressources/find2.png</file>
+        <file>ressources/mail2.png</file>
+        <file>ressources/menu2.png</file>
+        <file>ressources/photo2.png</file>
+        <file>ressources/return2.png</file>
+        <file>ressources/stat2.png</file>
+        <file>ressources/update2.png</file>
+        <file>ressources/video2.png</file>
     </qresource>
 </RCC>

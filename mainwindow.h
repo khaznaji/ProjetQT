@@ -6,6 +6,9 @@
 #include<QMediaPlayer>
 #include"smtp.h"
 #include<QPropertyAnimation>
+
+#include"arduino.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +20,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+
 
 private slots:
     void on_pb_ajouter_clicked();
@@ -75,6 +80,14 @@ private slots:
 
     void on_pushButton_16_clicked();
 
+    void on_pushButton_18_clicked();
+
+    void on_pushButton_19_clicked();
+
+    void on_pushButton_20_clicked();
+
+    void on_pushButton_21_clicked();
+
 private:
     Ui::MainWindow *ui;
     Materiel tmpmateriel ;
@@ -82,6 +95,10 @@ private:
     QMediaPlayer*mMediaPlayer;
     QPropertyAnimation *animation;
 QStringList files;
+arduino ard;
+arduino tmparduino;
+
+
 };
 
 #endif // MAINWINDOW_H
