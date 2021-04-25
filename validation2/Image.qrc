@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../gris.jpg</file>
+        <file>../../Downloads/return2.png</file>
+        <file>../../Downloads/update2.png</file>
+        <file>../../Downloads/stat2.png</file>
+        <file>../../Downloads/find2.png</file>
+        <file>../../Downloads/add2.png</file>
+        <file>../../Downloads/delete2.png</file>
+        <file>../../Downloads/menu2.png</file>
+    </qresource>
+</RCC>
