@@ -12,5 +12,8 @@
         <file>ressources/stat2.png</file>
         <file>ressources/update2.png</file>
         <file>ressources/video2.png</file>
+        <file>ressources/date.png</file>
+        <file>ressources/horloge.png</file>
+        <file>ressources/web.png</file>
     </qresource>
 </RCC>

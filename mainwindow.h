@@ -3,6 +3,9 @@
 #include "materiel.h"
 #include <QMainWindow>
 #include"fournisseur.h"
+#include <QFileDialog>
+
+
 #include<QMediaPlayer>
 #include"smtp.h"
 #include<QPropertyAnimation>
@@ -88,8 +91,22 @@ private slots:
 
     void on_pushButton_21_clicked();
 
+    void on_lcdNumber_2_overflow();
+
+    void on_dateTimeEdit_dateChanged(const QDate &date);
+    void showTime();
+
+    void on_pushButton_22_clicked();
+
+    void on_pushButton_46_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_browseBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
+
     Materiel tmpmateriel ;
     Fournisseur tmpfournisseur;
     QMediaPlayer*mMediaPlayer;

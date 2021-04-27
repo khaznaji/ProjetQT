@@ -16,6 +16,12 @@
 #include "smtp.h"
 #include<QPropertyAnimation>
 #include<QPrinter>
+#include<QTimer>
+#include<QDateTime>
+#include<QDesktopServices>
+#include<QUrl>
+
+
 //arduino
 #include<QtSerialPort/QSerialPort>
 #include<QtSerialPort/QSerialPortInfo>
@@ -55,6 +61,7 @@ ui->tabfournisseurs->setModel(tmpfournisseur.afficher());
 
 QRegExp rx("[a-zA-Z]+");
  QValidator *validator = new QRegExpValidator(rx, this);
+
 //fournisseur
  ui->le_nom->setValidator(validator);
  ui->prenom->setValidator(validator);
@@ -66,7 +73,7 @@ ui->num->setValidator(new QIntValidator(0,99999999,this));
 //materiel
 ui->nom->setValidator(validator);
 ui->typ->setValidator(validator);
-ui->cout->setValidator(new QIntValidator(0,999,this));
+ui->cout->setValidator(new QIntValidator(0,99999,this));
 ui->duree->setValidator(new QIntValidator(0,999,this));
 ui->vlm->setValidator(new QIntValidator(0,999,this));
 ui->poids->setValidator(new QIntValidator(0,999,this));
@@ -98,7 +105,36 @@ animation =new QPropertyAnimation(ui->label_56,"geometry");
     curve.setAmplitude(2.00);
     animation->setLoopCount(2);
     animation->start();
+    QTimer *timer=new QTimer(this);
+    connect(timer ,SIGNAL(timeout()),this,SLOT(showTime()));
+    timer->start();
+
+    QDateTime dateTime=QDateTime::currentDateTime();
+    QString datetimetext=dateTime.toString("dddd . dd . MMMM . yyyy");
+    ui->DateTime_->setText(datetimetext);
+
+
 }
+void MainWindow::showTime(){
+
+    QTime time=QTime::currentTime();
+
+    QString time_text=time.toString("hh : mm : ss");
+    if ((time.second() % 2) == 0)
+    {
+       time_text[3] = ' ';
+       time_text[8] = ' ';
+
+
+
+
+    }
+    ui->Digital_clock->setText(time_text);
+
+
+
+}
+
 
 void MainWindow::Browse()
 {
@@ -450,6 +486,7 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 
 void MainWindow::on_pushButton_8_clicked()
 {
+    //gestion mteei
     ui->stackedWidget->setCurrentIndex(4);
 }
 
@@ -461,11 +498,13 @@ void MainWindow::on_toolButton_clicked()
 
 void MainWindow::on_pushButton_17_clicked()
 {
+    //menu
     ui->stackedWidget->setCurrentIndex(2);
 
 }
 void MainWindow::on_pushButton_21_clicked()
 {
+    //menu
       ui->stackedWidget->setCurrentIndex(2);
 }
 
@@ -477,32 +516,39 @@ void MainWindow::on_toolButton_triggered(QAction *arg1)
 
 void MainWindow::on_pushButton_7_clicked()
 {
+    //gestion materiel
     ui->stackedWidget->setCurrentIndex(3);
 
 }
 
 void MainWindow::on_pushButton_14_clicked()
 {
+    //gestion fournisseurs
     ui->stackedWidget->setCurrentIndex(0);
 
 }
 
 void MainWindow::on_pushButton_15_clicked()
 {
+    //retour aux entitees
     ui->stackedWidget->setCurrentIndex(4);
 
 }
 
 void MainWindow::on_pushButton_16_clicked()
 {
+    //retour aux entitees
     ui->stackedWidget->setCurrentIndex(4);
 
 }
 
 void MainWindow::on_pushButton_18_clicked()
-{int x=0;
+{  //arduino
+    int x=0;
     ui->stackedWidget->setCurrentIndex(1);
     QString read=ard.read_from_arduino();
+
+
     int ln=read.length();
     QString id=read.right(ln-1);//élimination du premier espace
     id=id.left(ln-3);//élimination des 3 derniers espaces (serial.println)
@@ -533,7 +579,7 @@ void MainWindow::on_pushButton_18_clicked()
 ui->tableView->setModel(model);
 }
 
-
+//pdf
 void MainWindow::on_pushButton_19_clicked()
 {
     QMediaPlayer * bulletsound = new QMediaPlayer();
@@ -601,7 +647,7 @@ void MainWindow::on_pushButton_19_clicked()
 
 
 }
-
+// excel
 void MainWindow::on_pushButton_20_clicked()
 {
     QTableView *table;
@@ -638,4 +684,49 @@ void MainWindow::on_pushButton_20_clicked()
 
                        }
 }
+
+
+void MainWindow::on_pushButton_22_clicked()
+{
+    //open web page
+    QString link="http://www.google.com";
+    QDesktopServices::openUrl(QUrl(link));
+
+
+}
+
+
+
+void MainWindow::on_pushButton_23_clicked()
+{
+    //to open the picture file
+
+    QString fileName = QFileDialog::getOpenFileName(this,
+              tr("Choose"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+
+    //to select and show the pic
+    if (QString::compare(fileName, QString()) !=0)
+    {
+        QImage image;
+        bool valid = image.load(fileName);
+        if (valid)
+        {
+
+          image = image.scaledToHeight(ui->label_pic->height(), Qt::SmoothTransformation);
+          image = image.scaledToWidth(ui->label_pic->width(), Qt::SmoothTransformation);
+
+
+
+          ui->label_pic->setPixmap(QPixmap::fromImage(image));
+        }
+        else
+        {
+            //error
+        }
+
+    }
+
+
+}
+
 

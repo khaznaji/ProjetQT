@@ -5,6 +5,8 @@
 #-------------------------------------------------
 QT += core gui  multimedia serialport
 
+
+
 QMAKE_CXXFLAGS+=-std=gnu++11
 QT       += core gui sql
 QT       +=printsupport

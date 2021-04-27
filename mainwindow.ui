@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1063</width>
-    <height>682</height>
+    <width>1137</width>
+    <height>734</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
 url(:/Downloads/gris.jpg)</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_0">
      <widget class="QTabWidget" name="tabWidget_2">
@@ -1258,6 +1258,71 @@ background:#cccccc</string>
            <string/>
           </property>
          </widget>
+         <widget class="QLabel" name="Digital_clock">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>0</y>
+            <width>181</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 20pt &quot;Tw Cen MT&quot;;
+</string>
+          </property>
+          <property name="text">
+           <string>clock</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DateTime_">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>50</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;Tw Cen MT&quot;;</string>
+          </property>
+          <property name="text">
+           <string>date</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_62">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>0</y>
+            <width>21</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/ressources/horloge.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_63">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>21</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/ressources/date.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
          <zorder>label_21</zorder>
          <zorder>le_id</zorder>
          <zorder>le_nom</zorder>
@@ -1295,6 +1360,10 @@ background:#cccccc</string>
          <zorder>label_36</zorder>
          <zorder>label_37</zorder>
          <zorder>label_38</zorder>
+         <zorder>Digital_clock</zorder>
+         <zorder>DateTime_</zorder>
+         <zorder>label_62</zorder>
+         <zorder>label_63</zorder>
         </widget>
         <widget class="QWidget" name="tab_12">
          <attribute name="title">
@@ -2279,9 +2348,9 @@ transition: all 0.4s ease 0s;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>10</y>
         <width>1041</width>
-        <height>631</height>
+        <height>671</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -2523,7 +2592,7 @@ transition: all 0.4s ease 0s;
         <widget class="QLabel" name="label_47">
          <property name="geometry">
           <rect>
-           <x>340</x>
+           <x>350</x>
            <y>30</y>
            <width>31</width>
            <height>31</height>
@@ -2671,7 +2740,7 @@ transition: all 0.4s ease 0s;
         <widget class="QLabel" name="label_39">
          <property name="geometry">
           <rect>
-           <x>300</x>
+           <x>310</x>
            <y>50</y>
            <width>31</width>
            <height>31</height>
@@ -3063,7 +3132,7 @@ transition: all 0.4s ease 0s;
        <widget class="QPushButton" name="pushButton_15">
         <property name="geometry">
          <rect>
-          <x>840</x>
+          <x>870</x>
           <y>490</y>
           <width>93</width>
           <height>28</height>
@@ -3315,7 +3384,7 @@ transition: all 0.4s ease 0s;
        <widget class="QLabel" name="label_40">
         <property name="geometry">
          <rect>
-          <x>810</x>
+          <x>840</x>
           <y>450</y>
           <width>21</width>
           <height>31</height>
@@ -3331,7 +3400,7 @@ transition: all 0.4s ease 0s;
        <widget class="QLabel" name="label_42">
         <property name="geometry">
          <rect>
-          <x>720</x>
+          <x>730</x>
           <y>360</y>
           <width>31</width>
           <height>31</height>
@@ -3347,7 +3416,7 @@ transition: all 0.4s ease 0s;
        <widget class="QLabel" name="label_43">
         <property name="geometry">
          <rect>
-          <x>810</x>
+          <x>840</x>
           <y>490</y>
           <width>31</width>
           <height>31</height>
@@ -3363,7 +3432,7 @@ transition: all 0.4s ease 0s;
        <widget class="QLabel" name="label_45">
         <property name="geometry">
          <rect>
-          <x>870</x>
+          <x>880</x>
           <y>360</y>
           <width>31</width>
           <height>31</height>
@@ -3379,7 +3448,7 @@ transition: all 0.4s ease 0s;
        <widget class="QPushButton" name="pushButton_21">
         <property name="geometry">
          <rect>
-          <x>840</x>
+          <x>870</x>
           <y>450</y>
           <width>91</width>
           <height>28</height>
@@ -3444,6 +3513,207 @@ transition: all 0.4s ease 0s;
         </property>
         <property name="text">
          <string>Menu</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_22">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>93</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }</string>
+        </property>
+        <property name="text">
+         <string>WebBrowser</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_pic">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>410</y>
+          <width>181</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_41">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>590</y>
+          <width>91</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Picture Path</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_23">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>590</y>
+          <width>71</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }</string>
+        </property>
+        <property name="text">
+         <string>Browse...</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_58">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>590</y>
+          <width>31</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/ressources/photo2.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_61">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>31</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/ressources/web.png);</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>
@@ -3623,7 +3893,7 @@ color:qconicalgradient(cx:0.5, cy:0.5, angle:0, stop:0 rgba(0, 0, 0, 255), stop:
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1063</width>
+     <width>1137</width>
      <height>26</height>
     </rect>
    </property>
