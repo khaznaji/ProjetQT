@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../img/Copy.png</file>
+        <file>../img/Cut.png</file>
+        <file>../img/File.png</file>
+        <file>../img/gris.jpg</file>
+        <file>../img/Open.png</file>
+        <file>../img/Redo.png</file>
+        <file>../img/Save.png</file>
+        <file>../img/SaveAs.png</file>
+        <file>../img/Undo.png</file>
+        <file>../img/Paste.png</file>
+        <file>../img/pdf.png</file>
+        <file>../img/icons8-trouver-l'utilisateur-homme-50.png</file>
+        <file>../img/recherche.png</file>
+        <file>../img/supprimer.png</file>
+        <file>../img/image.png</file>
+        <file>../img/video.png</file>
+        <file>../img/menu.png</file>
+        <file>../img/retour.png</file>
+        <file>../img/stat.png</file>
+        <file>../img/add.png</file>
+        <file>../img/update.png</file>
+        <file>../access.png</file>
+        <file>../img/accees.png</file>
+        <file>../img/q.jpg</file>
+        <file>../img/a.jpg</file>
+        <file>../img/add2.png</file>
+        <file>../img/card2.png</file>
+        <file>../img/delete2.png</file>
+        <file>../img/find2.png</file>
+        <file>../img/mail2.png</file>
+        <file>../img/menu2.png</file>
+        <file>../img/photo2.png</file>
+        <file>../img/return2.png</file>
+        <file>../img/stat2.png</file>
+        <file>../img/update2.png</file>
+        <file>../img/video2.png</file>
+        <file>../img/broswser.png</file>
+        <file>../img/note.png</file>
+        <file>../img/exit.png</file>
+    </qresource>
+</RCC>
