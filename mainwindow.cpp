@@ -730,3 +730,23 @@ void MainWindow::on_pushButton_23_clicked()
 }
 
 
+
+void MainWindow::on_pushButton_25_clicked()
+{
+    //open file name
+      QString filename=QFileDialog::getOpenFileName(this
+                                                    ,tr("Open File"),
+                                                    "C://", "All files (*.*);;Text File(*.txt);;Music file(*.mp3)" );
+      QDesktopServices::openUrl(QUrl("file:///"+filename,QUrl::TolerantMode));
+     // QMessageBox::information(this,tr("File Name"),filename);
+}
+
+void MainWindow::on_pushButton_24_clicked()
+{
+    //open file name
+      QString filename=QFileDialog::getOpenFileName(this
+                                                    ,tr("Open File"),
+                                                    "C://", "All files (*.*);;Text File(*.txt);;Music file(*.mp3)" );
+      QDesktopServices::openUrl(QUrl("file:///"+filename,QUrl::TolerantMode));
+     // QMessageBox::information(this,tr("File Name"),filename);
+}

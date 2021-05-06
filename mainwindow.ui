@@ -28,7 +28,7 @@
 url(:/Downloads/gris.jpg)</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_0">
      <widget class="QTabWidget" name="tabWidget_2">
@@ -608,7 +608,7 @@ transition: all 0.4s ease 0s;
          <widget class="QPushButton" name="pb_tri">
           <property name="geometry">
            <rect>
-            <x>410</x>
+            <x>450</x>
             <y>60</y>
             <width>81</width>
             <height>31</height>
@@ -1323,6 +1323,76 @@ background:#cccccc</string>
            <string/>
           </property>
          </widget>
+         <widget class="QPushButton" name="pushButton_25">
+          <property name="geometry">
+           <rect>
+            <x>332</x>
+            <y>60</y>
+            <width>111</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }</string>
+          </property>
+          <property name="text">
+           <string>OPEN FILE NAME</string>
+          </property>
+         </widget>
          <zorder>label_21</zorder>
          <zorder>le_id</zorder>
          <zorder>le_nom</zorder>
@@ -1364,6 +1434,7 @@ background:#cccccc</string>
          <zorder>DateTime_</zorder>
          <zorder>label_62</zorder>
          <zorder>label_63</zorder>
+         <zorder>pushButton_25</zorder>
         </widget>
         <widget class="QWidget" name="tab_12">
          <attribute name="title">
@@ -3052,7 +3123,7 @@ transition: all 0.4s ease 0s;
        <widget class="QPushButton" name="pb_tri_2">
         <property name="geometry">
          <rect>
-          <x>450</x>
+          <x>470</x>
           <y>40</y>
           <width>81</width>
           <height>31</height>
@@ -3714,6 +3785,76 @@ transition: all 0.4s ease 0s;
         </property>
         <property name="text">
          <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_24">
+        <property name="geometry">
+         <rect>
+          <x>352</x>
+          <y>37</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }</string>
+        </property>
+        <property name="text">
+         <string>OPEN FILE NAME</string>
         </property>
        </widget>
       </widget>

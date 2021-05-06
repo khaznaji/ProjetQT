@@ -104,6 +104,10 @@ private slots:
 
     void on_browseBtn_clicked();
 
+    void on_pushButton_25_clicked();
+
+    void on_pushButton_24_clicked();
+
 private:
     Ui::MainWindow *ui;
 
