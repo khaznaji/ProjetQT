@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ardyuno2</class>
+ <widget class="QDialog" name="ardyuno2">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image:url(:/img/bg.jpg)</string>
+  </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>170</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }</string>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>170</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+
+padding: 1px;
+
+border-style: solid;
+
+border: 2px solid gray;
+
+border-radius: 8px;
+
+background-color: rgb(170, 150, 123);
+
+border:2px solid #000;
+
+}
+
+QPushButton {
+
+     color: #fff !important;
+
+
+
+text-decoration: none;
+
+background: #ffb300;
+
+font: 10pt &quot;MS Shell Dlg 2&quot;;
+
+border-radius: 5px;
+
+display: inline-block;
+
+border: none;
+
+transition: all 0.4s ease 0s;
+
+ }
+
+ QPushButton:hover {
+
+     background: #ffcc00;
+
+	background-color: ;
+
+letter-spacing: 1px;
+
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+
+transition: all 0.4s ease 0s;
+
+ }</string>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bienvenue">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>90</y>
+     <width>251</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+font: 16pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(67, 200, 0);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
